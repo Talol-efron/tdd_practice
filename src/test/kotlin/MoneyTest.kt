@@ -5,8 +5,10 @@ import org.amshove.kluent.shouldBeEqualTo
 class MoneyTest {
     @Test
     fun testMultiplication() {
-        val target = Dollar(5)
-        target.times(2)
-        target.amount shouldBeEqualTo 10
+        val five = Dollar(5)
+        var product = five.times(2)
+        product.amount shouldBeEqualTo 10
+        product = five.times(3)
+        product.amount shouldBeEqualTo 15
     }
 }
