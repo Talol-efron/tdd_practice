@@ -17,4 +17,11 @@ class MoneyTest {
         assertTrue(Dollar(5).equals(Dollar(5)))
         assertFalse(Dollar(5).equals(Dollar(6)))
     }
+
+    @Test
+    fun testFrancMultiplication() {
+        val five = Franc(5)
+        Franc(10) shouldBeEqualTo five.times(2)
+        Franc(15) shouldBeEqualTo five.times(3)
+    }
 }

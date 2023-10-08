@@ -1,9 +1,9 @@
-class Dollar(private var amount: Int) {
+class Franc(private var amount: Int) {
     fun times(multiplier: Int): Franc {
         return Franc(amount * multiplier)
     }
 
-    fun equals(obj: Dollar): Boolean {
+    fun equals(obj: Franc): Boolean {
         return amount == obj.amount
     }
 
