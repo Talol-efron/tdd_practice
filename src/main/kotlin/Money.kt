@@ -1,7 +1,9 @@
-open abstract class Money(protected val amount: Int, protected val currency: String) {
-    abstract fun times(multiplier: Int): Money
+open class Money (private val amount: Int, private val currency: String) {
+    fun times(multiplier: Int): Money {
+        return Money(amount * multiplier, currency)
+    }
     fun equals(money: Money): Boolean {
-        return amount == money.amount && this::class == money::class
+        return amount == money.amount && currency().equals(money.currency())
     }
     companion object {
         fun dollar(amount: Int): Dollar {
