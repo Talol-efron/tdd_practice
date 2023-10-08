@@ -1,5 +1,5 @@
 open class Money(protected val amount: Int) {
-    fun equals(obj: Money): Boolean {
-        return amount == obj.amount
+    fun equals(money: Money): Boolean {
+        return amount == money.amount && this::class == money::class
     }
 }
