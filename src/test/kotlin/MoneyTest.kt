@@ -28,4 +28,10 @@ class MoneyTest {
         Money.franc(10).hashCode() shouldBeEqualTo five.times(2).hashCode()
         Money.franc(15).hashCode() shouldBeEqualTo five.times(3).hashCode()
     }
+
+    @Test
+    fun testCurrency(){
+        Money.dollar(1).currency() shouldBeEqualTo "USD"
+        Money.franc(1).currency() shouldBeEqualTo "CHF"
+    }
 }

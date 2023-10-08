@@ -1,5 +1,5 @@
-class Dollar(amount: Int): Money(amount) {
-    fun times(multiplier: Int): Money {
-        return Dollar(amount * multiplier)
+class Dollar(amount: Int, currency: String): Money(amount, currency) {
+    override fun times(multiplier: Int): Money {
+        return Money.dollar(amount * multiplier)
     }
 }
