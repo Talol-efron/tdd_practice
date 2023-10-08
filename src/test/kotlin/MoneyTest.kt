@@ -16,12 +16,15 @@ class MoneyTest {
     fun testEquality() {
         assertTrue(Dollar(5).equals(Dollar(5)))
         assertFalse(Dollar(5).equals(Dollar(6)))
+        assertTrue(Franc(5).equals(Franc(5)))
+        assertFalse(Franc(5).equals(Franc(6)))
     }
 
     @Test
     fun testFrancMultiplication() {
         val five = Franc(5)
-        Franc(10) shouldBeEqualTo five.times(2)
-        Franc(15) shouldBeEqualTo five.times(3)
+        Franc(5).hashCode() shouldBeEqualTo 5
+        Franc(10).hashCode() shouldBeEqualTo five.times(2).hashCode()
+        Franc(15).hashCode() shouldBeEqualTo five.times(3).hashCode()
     }
 }

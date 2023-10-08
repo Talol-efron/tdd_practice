@@ -1,10 +1,6 @@
-class Franc(private var amount: Int) {
+class Franc(amount: Int): Money(amount) {
     fun times(multiplier: Int): Franc {
         return Franc(amount * multiplier)
-    }
-
-    fun equals(obj: Franc): Boolean {
-        return amount == obj.amount
     }
 
     override fun hashCode(): Int {
