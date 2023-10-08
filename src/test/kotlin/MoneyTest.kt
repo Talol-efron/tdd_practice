@@ -1,15 +1,15 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.amshove.kluent.*
-import org.amshove.kluent.shouldBeTrue
+
 class MoneyTest {
     @Test
     fun testMultiplication() {
         val five = Dollar(5)
-        var product = five.times(2)
-        product.amount shouldBeEqualTo 10
-        product = five.times(3)
-        product.amount shouldBeEqualTo 15
+//        オブジェクトが保持する値の参照ができない -> hashCode()でamountを返すようにした
+        Dollar(5).hashCode() shouldBeEqualTo 5
+        Dollar(10).hashCode() shouldBeEqualTo five.times(2).hashCode()
+        Dollar(15).hashCode() shouldBeEqualTo five.times(3).hashCode()
     }
 
     @Test
