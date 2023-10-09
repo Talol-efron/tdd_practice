@@ -15,24 +15,11 @@ class MoneyTest {
     fun testEquality() {
         assertTrue(Money.dollar(5).equals(Money.dollar(5)))
         assertFalse(Money.dollar(5).equals(Money.dollar(6)))
-        assertTrue(Money.franc(5).equals(Money.franc(5)))
-        assertFalse(Money.franc(5).equals(Money.franc(6)))
         assertFalse(Money.franc(5).equals(Money.dollar(5)))
-    }
-    @Test
-    fun testFrancMultiplication() {
-        val five = Money.franc(5)
-        Money.franc(5).hashCode() shouldBeEqualTo 5
-        Money.franc(10).hashCode() shouldBeEqualTo five.times(2).hashCode()
-        Money.franc(15).hashCode() shouldBeEqualTo five.times(3).hashCode()
     }
     @Test
     fun testCurrency(){
         Money.dollar(1).currency() shouldBeEqualTo "USD"
         Money.franc(1).currency() shouldBeEqualTo "CHF"
-    }
-    @Test
-    fun testDifferentClassEquality() {
-        assertTrue(Money(10, "CHF").equals(Franc(10, "CHF")) )
     }
 }

@@ -6,11 +6,11 @@ open class Money (private val amount: Int, private val currency: String) {
         return amount == money.amount && currency().equals(money.currency())
     }
     companion object {
-        fun dollar(amount: Int): Dollar {
-            return Dollar(amount, "USD")
+        fun dollar(amount: Int): Money {
+            return Money(amount, "USD")
         }
-        fun franc(amount: Int): Franc {
-            return Franc(amount, "CHF")
+        fun franc(amount: Int): Money {
+            return Money(amount, "CHF")
         }
     }
     override fun hashCode(): Int {
