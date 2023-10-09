@@ -27,9 +27,29 @@ class MoneyTest {
         val five = Money.dollar(5)
         val sum: Expression = five.plus(five)
         val bank: Bank = Bank()
-        val reduced = bank.reduce(sum, "USD").hashCode()
-//        sum shouldBeEqualTo Money.dollar(10)
+        val reduced = bank.reduce(sum, "USD")
 //        reduced shouldBeEqualTo Money.dollar(10)
-        assertEquals(reduced, Money.dollar(10).hashCode())
+        assertEquals(reduced.hashCode(), Money.dollar(10).hashCode())
+    }
+    @Test
+    fun testPlusReturnsSum() {
+        val five = Money.dollar(5)
+        val result = five.plus(five)
+        val sum = result as Sum
+        sum.augend shouldBeEqualTo five
+        sum.added shouldBeEqualTo five
+    }
+    @Test
+    fun testReduceSum() {
+        val sum = Sum(Money.dollar(3), Money.dollar(4))
+        val bank = Bank()
+        val result: Money = bank.reduce(sum, "USD")
+        result.hashCode() shouldBeEqualTo Money.dollar(7).hashCode()
+    }
+    @Test
+    fun testReduceMoney() {
+        val bank = Bank()
+        val result = bank.reduce(Money.dollar(1), "USD")
+        result.hashCode() shouldBeEqualTo Money.dollar(1).hashCode()
     }
 }

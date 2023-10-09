@@ -1,4 +1,4 @@
-open class Money (private val amount: Int, private val currency: String): Expression {
+open class Money (internal val amount: Int, private val currency: String): Expression {
     fun times(multiplier: Int): Money {
         return Money(amount * multiplier, currency)
     }
@@ -20,6 +20,9 @@ open class Money (private val amount: Int, private val currency: String): Expres
         return currency
     }
     fun plus(added: Money): Expression {
-        return Money(amount + added.amount, currency)
+        return Sum(this, added)
+    }
+    override fun reduce(to: String): Money {
+        return this
     }
 }

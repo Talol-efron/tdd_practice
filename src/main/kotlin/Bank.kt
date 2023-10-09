@@ -1,5 +1,8 @@
 class Bank {
     fun reduce(source: Expression, to: String): Money {
-        return Money.dollar(10)
+//        if (source is Money)
+//            return (source as Money).reduce(to)
+//        val sum = source as Sum
+        return source.reduce(to)
     }
 }
