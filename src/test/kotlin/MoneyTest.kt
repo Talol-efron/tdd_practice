@@ -22,4 +22,14 @@ class MoneyTest {
         Money.dollar(1).currency() shouldBeEqualTo "USD"
         Money.franc(1).currency() shouldBeEqualTo "CHF"
     }
+    @Test
+    fun testSimpleAddition() {
+        val five = Money.dollar(5)
+        val sum: Expression = five.plus(five)
+        val bank: Bank = Bank()
+        val reduced = bank.reduce(sum, "USD").hashCode()
+//        sum shouldBeEqualTo Money.dollar(10)
+//        reduced shouldBeEqualTo Money.dollar(10)
+        assertEquals(reduced, Money.dollar(10).hashCode())
+    }
 }
