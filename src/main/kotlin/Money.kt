@@ -13,6 +13,12 @@ open class Money (internal val amount: Int, private val currency: String): Expre
             return Money(amount, "CHF")
         }
     }
+
+    override fun reduce(bank: Bank, to: String): Money {
+        val rate: Int = bank.rate(currency, to)
+        return Money(amount / rate, to)
+    }
+
     override fun hashCode(): Int {
         return amount
     }
@@ -22,7 +28,5 @@ open class Money (internal val amount: Int, private val currency: String): Expre
     fun plus(added: Money): Expression {
         return Sum(this, added)
     }
-    override fun reduce(to: String): Money {
-        return this
-    }
+
 }

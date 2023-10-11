@@ -1,8 +1,16 @@
+import kotlin.collections.HashMap
+import kotlin.collections.MutableMap
 class Bank {
+    private val rates: MutableMap<Pair, Int> = HashMap()
     fun reduce(source: Expression, to: String): Money {
-//        if (source is Money)
-//            return (source as Money).reduce(to)
-//        val sum = source as Sum
-        return source.reduce(to)
+        return source.reduce(this, to)
+    }
+    fun addRate(from: String, to: String, rate: Int) {
+        rates[Pair(from, to)] = rate
+    }
+    fun rate(from: String, to: String): Int {
+        if (from == to) return 1
+//        add non-null assertをした。!!をつけた。応急処置。
+        return rates[Pair(from, to)]!!
     }
 }

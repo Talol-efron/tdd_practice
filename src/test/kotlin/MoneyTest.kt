@@ -52,4 +52,15 @@ class MoneyTest {
         val result = bank.reduce(Money.dollar(1), "USD")
         result.hashCode() shouldBeEqualTo Money.dollar(1).hashCode()
     }
+    @Test
+    fun testReduceMoneyDifferentCurrency() {
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val result = bank.reduce(Money.franc(2), "USD")
+        result.hashCode() shouldBeEqualTo Money.dollar(1).hashCode()
+    }
+    @Test
+    fun testIdentityRate() {
+        Bank().rate("USD", "USD") shouldBeEqualTo 1
+    }
 }
