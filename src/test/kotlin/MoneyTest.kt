@@ -26,7 +26,7 @@ class MoneyTest {
     fun testSimpleAddition() {
         val five = Money.dollar(5)
         val sum: Expression = five.plus(five)
-        val bank: Bank = Bank()
+        val bank = Bank()
         val reduced = bank.reduce(sum, "USD")
 //        reduced shouldBeEqualTo Money.dollar(10)
         assertEquals(reduced.hashCode(), Money.dollar(10).hashCode())
@@ -62,5 +62,14 @@ class MoneyTest {
     @Test
     fun testIdentityRate() {
         Bank().rate("USD", "USD") shouldBeEqualTo 1
+    }
+    @Test
+    fun testMixedAddition() {
+        val fiveBucks: Expression = Money.dollar(5)
+        val tenFrancs: Expression = Money.franc(10)
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
+        result.hashCode() shouldBeEqualTo Money.dollar(10).hashCode()
     }
 }
