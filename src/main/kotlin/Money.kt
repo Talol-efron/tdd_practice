@@ -1,5 +1,5 @@
 open class Money (internal val amount: Int, private val currency: String): Expression {
-    fun times(multiplier: Int): Expression {
+    override fun times(multiplier: Int): Expression {
         return Money(amount * multiplier, currency)
     }
     fun equals(money: Money): Boolean {
